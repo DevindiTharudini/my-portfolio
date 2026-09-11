@@ -3,18 +3,11 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const Loader = () => {
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 3000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loaded) return null;
+const Loader = ({ loading }) => {
+  if (!loading) return null;
 
   return (
-    <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-[9999] text-center overflow-hidden">
+    <div className="fixed inset-0 bg-white dark:bg-black flex flex-col items-center justify-center z-[9999] text-center overflow-hidden transition-colors duration-300">
       {/* Glitch Text */}
       <motion.h1
         initial={{ opacity: 0, scale: 0.95 }}
@@ -29,7 +22,7 @@ const Loader = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 1 }}
-        className="text-white text-lg md:text-xl font-medium mb-6"
+        className="text-black dark:text-white text-lg md:text-xl font-medium mb-6"
       >
         Getting things ready
         <span className="inline-flex ml-2 text-xl">

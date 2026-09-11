@@ -1,158 +1,121 @@
-import React, { useState } from "react";
-import Tilt from "react-parallax-tilt";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  FaReact,
-  FaFigma,
-  FaCss3Alt,
-  FaHtml5,
-  FaJs,
-  FaGithub,
-} from "react-icons/fa";
-import {
-  SiTailwindcss,
-  SiFirebase,
-  SiPostman,
-  SiSnowflake,
-} from "react-icons/si";
-import { Info } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
+import { 
+  Code2, 
+  Monitor, 
+  Server, 
+  Database as DbIcon, 
+  Cloud, 
+  BrainCircuit, 
+  Palette, 
+  Terminal 
+} from "lucide-react";
 
-const categories = {
-  "UI/UX Design": [
-    { name: "Figma", info: "UI design & prototyping", icon: <FaFigma />, top: true },
-    { name: "Wireframing", info: "Layout planning", icon: <FaFigma /> },
-    { name: "Prototyping", info: "Clickable mockups", icon: <FaFigma /> },
-    { name: "User Flow", info: "UX journey logic", icon: <FaFigma /> },
-  ],
-  "Frontend Development": [
-    { name: "React.js", info: "Component-based dev", icon: <FaReact />, top: true },
-    { name: "JavaScript", info: "Logic & interaction", icon: <FaJs />, top: true },
-    { name: "HTML", info: "Semantic structure", icon: <FaHtml5 /> },
-    { name: "CSS", info: "Styling and layout", icon: <FaCss3Alt /> },
-    { name: "Tailwind CSS", info: "Utility-first styling", icon: <SiTailwindcss /> },
-  ],
-  "Tools & Technologies": [
-    { name: "Firebase", info: "Auth, Firestore", icon: <SiFirebase /> },
-    { name: "Postman", info: "API testing", icon: <SiPostman /> },
-    { name: "GitHub", info: "Version control", icon: <FaGithub /> },
-    { name: "Snowflake SQL", info: "Data querying", icon: <SiSnowflake /> },
-  ],
-};
-
-// Variants for container to stagger children animation
-const containerVariants = {
-  initial: { opacity: 0, y: 30 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: { staggerChildren: 0.12, when: "beforeChildren" },
+const skillCategories = [
+  {
+    title: "LANGUAGES",
+    icon: <Code2 size={18} />,
+    skills: ["JavaScript", "SQL", "Python", "HTML5", "CSS3"]
   },
-  exit: { opacity: 0, y: 30 },
-};
+  {
+    title: "FRONTEND",
+    icon: <Monitor size={18} />,
+    skills: ["React", "Tailwind CSS", "Next.js", "Framer Motion", "Vite"]
+  },
+  {
+    title: "BACKEND",
+    icon: <Server size={18} />,
+    skills: ["Firebase", "Node.js", "REST APIs", "SQL", "Authentication"]
+  },
+  {
+    title: "DATABASE",
+    icon: <DbIcon size={18} />,
+    skills: ["PostgreSQL", "Firestore", "Snowflake SQL", "Data Modeling"]
+  },
+  {
+    title: "UI/UX DESIGN",
+    icon: <Palette size={18} />,
+    skills: ["Figma", "Design Systems", "Prototyping", "User Research"]
+  },
+  {
+    title: "AI & LLM",
+    icon: <BrainCircuit size={18} />,
+    skills: ["Gemini", "Prompt Engineering", "Generative AI", "AI Agents"]
+  },
+  {
+    title: "CLOUD & TOOLS",
+    icon: <Cloud size={18} />,
+    skills: ["GitHub", "Firebase Hosting", "Vercel", "Postman", "Agile"]
+  }
+];
 
-// Variants for each skill card fade/slide/scale in + scale on hover
-const skillVariants = {
-  initial: { opacity: 0, y: 20, scale: 0.95 },
-  animate: { opacity: 1, y: 0, scale: 1 },
-  hover: { scale: 1.05 },
-};
-
-// Variants for tooltip fade + slide
-const tooltipVariants = {
-  initial: { opacity: 0, y: 6 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: 6 },
-};
+const SkillBadge = ({ name }) => (
+  <span className="px-3 py-1.5 bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-300 hover:border-orange-500/50 transition-colors">
+    {name}
+  </span>
+);
 
 const Skills = () => {
-  const [activeCategory, setActiveCategory] = useState("UI/UX Design");
-
   return (
-    <section id="skills" className="bg-black text-white py-20 px-6 md:px-24">
-      <motion.h2
-        className="text-4xl font-bold text-center mb-10"
-        initial={{ opacity: 0, y: -30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        My <span className="text-orange-500">Skills</span>
-      </motion.h2>
+    <section id="skills" className="bg-white dark:bg-black text-neutral-900 dark:text-white py-12 md:py-20 px-6 md:px-24 transition-colors duration-300 relative overflow-hidden">
+      
+      {/* Background Decor */}
+      <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03] pointer-events-none" 
+           style={{ backgroundImage: 'radial-gradient(#000000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-      <div className="flex justify-center gap-4 flex-wrap mb-12">
-        {Object.keys(categories).map((category) => (
-          <button
-            key={category}
-            onClick={() => setActiveCategory(category)}
-            className={`px-5 py-2 rounded-full border text-sm font-semibold transition duration-300 
-              ${
-                activeCategory === category
-                  ? "bg-orange-500 text-white border-orange-500 shadow-lg"
-                  : "border-white/20 text-white hover:bg-orange-500/10"
-              }`}
+      <div className="max-w-7xl mx-auto relative z-10">
+        
+        {/* Modern Header - Synced with About */}
+        <div className="flex flex-col items-center mb-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-2 mb-4"
           >
-            {category}
-          </button>
-        ))}
-      </div>
+            <div className="w-8 h-[1px] bg-orange-500" />
+            <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-orange-600 dark:text-orange-500">Expertise</span>
+            <div className="w-8 h-[1px] bg-orange-500" />
+          </motion.div>
+          <motion.h2
+            className="text-4xl md:text-5xl font-extrabold tracking-tight text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Core <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Capabilities</span>
+          </motion.h2>
+        </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeCategory}
-          className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-          variants={containerVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition={{ duration: 0.4 }}
-        >
-          {categories[activeCategory].map((skill, index) => (
-            <Tilt
-              key={index}
-              tiltMaxAngleX={10}
-              tiltMaxAngleY={10}
-              glareEnable={true}
-              glareColor="#ff914d"
-              className="rounded-2xl"
+        {/* Categories Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skillCategories.map((category, index) => (
+            <motion.div
+              key={category.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
+              className="group p-8 bg-gray-50 dark:bg-[#0A0A0A] border border-gray-200 dark:border-neutral-900 rounded-3xl hover:border-orange-500/30 transition-all duration-500 flex flex-col gap-6"
             >
-              <motion.div
-                className={`relative group p-5 border border-white/10 backdrop-blur-lg bg-white/5 rounded-2xl shadow-md hover:shadow-orange-500/20 transition duration-300 ${
-                  skill.top ? "border-orange-500 shadow-orange-400/30" : ""
-                }`}
-                variants={skillVariants}
-                initial="initial"
-                animate="animate"
-                whileHover="hover"
-                transition={{ duration: 0.3 }}
-              >
-                <div className="flex items-center gap-3 mb-2 text-orange-400 text-xl">
-                  {skill.icon}
-                  <h3 className="text-lg font-semibold text-white">{skill.name}</h3>
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-neutral-900 rounded-xl text-orange-500 shadow-xl border border-white/5 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-500">
+                  {category.icon}
                 </div>
+                <h3 className="text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase group-hover:text-white transition-colors">
+                  {category.title}
+                </h3>
+              </div>
 
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="relative group">
-                    <Info size={16} className="text-gray-300 hover:text-orange-400" />
-
-                    <AnimatePresence>
-                      <motion.div
-                        key="tooltip"
-                        className="absolute top-6 right-0 bg-black text-white text-xs rounded-md px-3 py-2 z-10 shadow-lg border border-white/10 whitespace-nowrap"
-                        variants={tooltipVariants}
-                        initial="initial"
-                        animate="animate"
-                        exit="exit"
-                        transition={{ duration: 0.3 }}
-                      >
-                        {skill.info}
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-                </div>
-              </motion.div>
-            </Tilt>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <SkillBadge key={skill} name={skill} />
+                ))}
+              </div>
+            </motion.div>
           ))}
-        </motion.div>
-      </AnimatePresence>
+        </div>
+
+      </div>
     </section>
   );
 };

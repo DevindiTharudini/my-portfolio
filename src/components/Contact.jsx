@@ -32,20 +32,20 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative min-h-screen px-6 md:px-24 py-20 bg-black text-white overflow-hidden"
+      className="relative min-h-screen px-6 md:px-24 py-20 bg-white dark:bg-black text-black dark:text-white transition-colors duration-300 overflow-hidden"
     >
       {/* ✅ Success popup with blur */}
       <AnimatePresence>
         {success && (
           <motion.div
             key="success-popup"
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
+            className="absolute inset-0 bg-white/50 dark:bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-white/10 border border-white/20 text-white px-8 py-6 rounded-xl shadow-xl text-center"
+              className="bg-white dark:bg-white/10 border border-gray-200 dark:border-white/20 text-black dark:text-white px-8 py-6 rounded-xl shadow-xl text-center"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -83,7 +83,7 @@ const Contact = () => {
         Let's <span className="text-orange-500">Connect</span>
       </motion.h2>
 
-      <div className="text-center text-gray-400 text-lg mb-12">
+      <div className="text-center text-gray-600 dark:text-gray-400 text-lg mb-12">
         <Typewriter
           options={{
             strings: ["Got a project idea?", "Want to collaborate?", "Say hello!"],
@@ -142,7 +142,7 @@ const Contact = () => {
           method="POST"
           target="hiddenFrame"
           onSubmit={handleFormSubmit}
-          className="relative bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-md space-y-8 shadow-lg"
+          className="relative bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 p-8 rounded-2xl backdrop-blur-md space-y-8 shadow-lg"
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -155,7 +155,7 @@ const Contact = () => {
                   rows="5"
                   required
                   placeholder=" "
-                  className="peer w-full bg-transparent border-b-2 border-gray-600 text-white py-3 placeholder-transparent focus:outline-none focus:border-orange-500"
+                  className="peer w-full bg-transparent border-b-2 border-gray-300 dark:border-gray-600 text-black dark:text-white py-3 placeholder-transparent focus:outline-none focus:border-orange-500"
                 />
               ) : (
                 <input
@@ -163,7 +163,7 @@ const Contact = () => {
                   name={field}
                   required
                   placeholder=" "
-                  className="peer w-full bg-transparent border-b-2 border-gray-600 text-white py-3 placeholder-transparent focus:outline-none focus:border-orange-500"
+                  className="peer w-full bg-transparent border-b-2 border-gray-300 dark:border-gray-600 text-black dark:text-white py-3 placeholder-transparent focus:outline-none focus:border-orange-500"
                 />
               )}
               <label className="absolute left-0 top-3 text-gray-400 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm peer-focus:text-orange-500">

@@ -11,10 +11,10 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white border-t border-white/10 py-8 px-6 md:px-24">
+    <footer className="bg-gray-50 dark:bg-black text-black dark:text-white border-t border-gray-200 dark:border-white/10 py-8 px-6 md:px-24 transition-colors duration-300">
       <div className="flex flex-col md:flex-row justify-between items-center gap-4">
         {/* Copyright */}
-        <p className="text-sm text-gray-400 text-center">
+        <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
           © {new Date().getFullYear()} Devindi Tharudini. All rights reserved.
         </p>
 
@@ -31,7 +31,7 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://github.com/DevindiTharudini" // 👉 Replace with your actual GitHub URL
+            href="https://github.com/DevindiTharudini"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-orange-500 transition"

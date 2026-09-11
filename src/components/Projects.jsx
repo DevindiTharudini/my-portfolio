@@ -7,7 +7,7 @@ import medicaid from "../assets/medicaid.png";
 import greenstay from "../assets/greenstay.png";
 import greenpass from "../assets/greenpass.png";
 import elephantpulse from "../assets/elephantpulse.png";
-import zynerEvents from "../assets/zynerEvents.png";
+import ZynerEvents from "../assets/ZynerEvents.png";
 import futuraPos from "../assets/futura-pos.png";
 import edlAsd from "../assets/EDL_ASD.mp4";
 import edlLms from "../assets/EDL_LMS.mp4";
